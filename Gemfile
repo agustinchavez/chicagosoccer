@@ -29,6 +29,7 @@ gem 'pry'
 
 gem 'geokit-rails'
 
+gem 'httparty'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
