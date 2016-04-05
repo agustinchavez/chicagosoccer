@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20160405222105) do
   enable_extension "plpgsql"
 
   create_table "pitches", force: :cascade do |t|
-    t.string   "neighborhood", null: false
-    t.string   "pitch_type",   null: false
-    t.string   "pitch_name",   null: false
-    t.string   "address",      null: false
+    t.string   "neighborhood"
+    t.string   "pitch_type"
+    t.string   "pitch_name"
+    t.string   "address"
     t.float    "latitude",     null: false
     t.float    "longitude",    null: false
     t.datetime "created_at",   null: false
