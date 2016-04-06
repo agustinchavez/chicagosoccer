@@ -1,7 +1,11 @@
+<h1>Here is your location, and the location of the nearest Soccer Pitch</h1>
 <div id="map"></div>
-    <div id="street-view"></div>
+
+<h1>Streetview</h1>
+<div id="street-view"></div>
 
  <script type="text/javascript">
+
     var map;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
@@ -10,20 +14,25 @@
       });
 
 
-    var playing_image = "<%= image_url "playin.jpg" %>";
-    var soccer_image = "<%= image_url "soccer-ball.png" %>";
+    // var playing_image = "<%= image_url "playin.jpg" %>";
+    // var soccer_image = "<%= image_url "soccer-ball.png" %>";
 
    var you = new google.maps.Marker({
     position: {lat: <%= @user_location.lat %>, lng: <%= @user_location.lng %>},
     map: map,
     title: 'You'
-    icon: playing_image
+    label: "You",
+    animation: google.maps.Animation.DROP
+    // icon: playing_image
   });
+
     var pitch = new google.maps.Marker({
     position: {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>},
     map: map,
     title: 'Your pitch!'
-    icon: soccer_image
+    label: "Pitch",
+    animation: google.maps.Animation.DROP
+    // icon: soccer_image
   });
 }
 
@@ -32,17 +41,18 @@
       panorama = new google.maps.StreetViewPanorama(
         document.getElementById('street-view'),
         {
-          position: {lat: <%= @bin.latitude %>, lng: <%= @bin.longitude %>},
+          position: {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>},
           pov: {heading: 0, pitch: 0},
           zoom: 1
         });
     }
 
-    </script>
+</script>
 
-    <script async defer
- src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhFk&callback=initMap">
- </script>
- <script async defer
-         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhF&callback=initialize">
-    </script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhFk&callback=initMap">
+</script>
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhF&callback=initialize">
+</script>
