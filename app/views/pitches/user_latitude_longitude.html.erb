@@ -1,5 +1,12 @@
+<div class="main">
+
   <h3>Here is your location, and your nearest pitch location</h3>
   <div id="map"></div>
+
+   <%= button_to "Map", { action: "user_latitude_longitude", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, id: "map-button", method: :post %>
+   <%= button_to "Driving Directions", { action: "driving_directions", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, id: "driving-button", method: :post %>
+   <%= button_to "Street View", { action: "street_view", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, id: "street-button", method: :post %>
+
 
   <script type="text/javascript">
 
@@ -7,9 +14,6 @@
 
    function initMap() {
 
-  // <%= button_to "Map", { action: "user_latitude_longitude", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, id: "map-button", method: :post %>
-  // <%= button_to "Driving Directions", { action: "driving_directions", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, id: "driving-button", method: :post %>
-  // <%= button_to "Street View", { action: "street_view", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, id: "street-button", method: :post %>
 
     var user = {lat: <%= @user_location.lat %>, lng: <%= @user_location.lng %>};
     var pitch = {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>};
@@ -76,3 +80,5 @@
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhFk&callback=initMap">
 </script>
+
+</div>
