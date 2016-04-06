@@ -4,18 +4,17 @@
   <div class="row">
     <div class="twelve columns text-center"><br/>
       <a href="javascript:location.reload(true)" class="logo"><%=image_tag "soccer-ball.png", class: "logo"%></a>
+      <br>
 
-      <h2> All Soccer Pitches </h2>
       <div class="main">
 
       <div class="main_page">
         <br>
+
         <button class="button large location">Use Current Location</button>
         <button class="button large address">Input an Address</button>
 
 
-      <br>
-      <hr>
       <div class="address_form">
         <%= form_tag "/pitches/coordinate_conversion", method: :post do %>
         <%= text_field_tag "address", nil, placeholder:"Address" %>
@@ -28,12 +27,7 @@
 
       <p id="location"></p>
       </div>
+
     </div>
   </div>
 </div>
-
-<div class="map-container"></div>
-
-<div class="directions-container"></div>
-
-<div class="streetview-container"></div>

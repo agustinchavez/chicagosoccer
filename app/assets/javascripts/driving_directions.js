@@ -1,4 +1,4 @@
-function initWalking(user_lat, user_lng, pitch_lat, pitch_lng) {
+function initDriving(user_lat, user_lng, pitch_lat, pitch_lng) {
   var user = {lat: user_lat, lng: user_lng};
   var pitch = {lat: pitch_lat, lng: pitch_lng};
 
