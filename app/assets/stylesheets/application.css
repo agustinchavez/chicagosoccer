@@ -50,20 +50,24 @@
 #map-button {
   display: inline-block;
   position: center;
+  font-weight: bold;
 }
 
 #streetview-button {
   display: inline-block;
   position: center;
+  font-weight: bold;
 }
 
 #driving-button {
   display: inline-block;
   position: center;
+  font-weight: bold;
 }
 
 .logo {
   display: block;
   margin: 0 auto;
   height: 6em;
+  margin-top: 7em;
 }
