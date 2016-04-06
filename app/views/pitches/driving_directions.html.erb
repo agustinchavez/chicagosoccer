@@ -25,7 +25,6 @@
 
 <div id="driving_directions"></div>
 
-<div id="map"></div>
 <!--
   <%= button_to "Map", { action: "user_latitude_longitude", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, method: :post %>
 
@@ -35,50 +34,17 @@
  -->
 <script type="text/javascript">
 
-function initMap() {
+  var user_lat = <%= @user_location.lat %>;
+  var user_lng = <%= @user_location.lng %>;
+  var pitch_lat = <%= @pitch.latitude %>;
+  var pitch_lng = <%= @pitch.longitude %>;
 
-  var user = {lat: <%= @user_location.lat %>, lng: <%= @user_location.lng %>};
-  var pitch = {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>};
 
-  var directionsDisplay = new google.maps.DirectionsRenderer;
-  var directionsService = new google.maps.DirectionsService;
-
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 5,
-    center: user
-  });
-
-  directionsDisplay.setMap(map);
-  directionsDisplay.setPanel(document.getElementById('driving_directions'));
-
-  calculateAndDisplayRoute(directionsService, directionsDisplay);
-
-  // var control = document.getElementById('floating-panel');
-  // control.style.display = 'block';
-  // map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
-  // calculateAndDisplayRoute(directionsService, directionsDisplay);
-
-function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-  var start = user;
-  var end = pitch;
-  directionsService.route({
-    origin: start,
-    destination: end,
-    travelMode: google.maps.TravelMode.DRIVING
-  }, function(response, status) {
-    if (status === google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    } else {
-      window.alert('Directions request failed due to ' + status);
-    }
-  });
-  }
-}
 
 </script>
 
 <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhFk&callback=initMap">
-</script>
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhFk&callback=initMap">
+    </script>
 
 </div>

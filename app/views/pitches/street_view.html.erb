@@ -22,27 +22,21 @@
   <% end %>
 
   <div id="street_view"></div>
-<!--
-  <%= button_to "Map", { action: "user_latitude_longitude", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, method: :post %>
 
-  <%= button_to "Driving Directions", { action: "driving_directions", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, method: :post %>
-
-  <%= button_to "Street View", { action: "street_view", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, method: :post %>
- -->
   <script type="text/javascript">
+    var pitch_lat = <%= @pitch.latitude %>;
+    var pitch_lng = <%= @pitch.longitude %>;
 
-  var panorama;
-  function initialize() {
-    panorama = new google.maps.StreetViewPanorama(
-      document.getElementById('street_view'),
-      {
-        position: {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>},
-        pov: {heading: 0, pitch: 0},
-        zoom: 1
-      });
-  }
-  </script>
+    initStreet(pitch_lat, pitch_lng);
 
-  <script async defer
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhFk&callback=initialize">
+  // var panorama;
+  // function initialize() {
+  //   panorama = new google.maps.StreetViewPanorama(
+  //     document.getElementById('street_view'),
+  //     {
+  //       position: {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>},
+  //       pov: {heading: 0, pitch: 0},
+  //       zoom: 1
+  //     });
+  // }
   </script>

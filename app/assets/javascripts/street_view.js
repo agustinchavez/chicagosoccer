@@ -1,18 +1,10 @@
-// var main = $(".main")
-
-//   $('#street-button').on('click', function(event){
-
-//     event.preventDefault();
-//     data = $(this).serialize()
-//     debugger
-
-//      $.ajax({
-//         url: "pitches/street_view",
-//         method: "post",
-//         data: data
-//       })
-//       .done(function(response){
-//         main.html(response);
-//       });
-
-//   });
+var panorama;
+function initStreet(pitchLat, pitchLng) {
+  panorama = new google.maps.StreetViewPanorama(
+    document.getElementById('street_view'),
+    {
+      position: {lat: pitchLat, lng: pitchLng},
+      pov: {heading: 0, pitch: 0},
+      zoom: 1
+    });
+}
