@@ -29,7 +29,7 @@ class PitchesController < ApplicationController
     address_data = Geokit::Geocoders::GoogleGeocoder.geocode pitch_address
     @user_location = Geokit::LatLng.new(address_data.lat, address_data.lng)
     @pitch = Pitch.closest(:origin => @user_location).first
-    render "/pitches/user_latitude_longitude"
+    render "/pitches/user_latitude_longitude", layout: false
   end
 
 end

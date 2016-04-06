@@ -3,7 +3,34 @@ $(document).ready(function(){
   var errors = $("#errors")
   var main = $(".main")
 
-  $('.button').one('click', function(event){
+  $('.address_form').hide()
+
+  $('.address').on('click', function(event){
+    event.preventDefault();
+    if ($('.address_form').is(":hidden")){
+      $('.address_form').slideDown()
+    }
+    else {
+      $('.address_form').slideUp()
+    }
+
+  })
+
+   $('.success.button').on('click', function(event){
+    event.preventDefault();
+    console.log("yes")
+    var data = $(event.target).parent().serialize()
+    $.ajax({
+    url: "/pitches/user_latitude_longitude",
+    method: "post",
+    data: data
+    })
+    .done(function(response){
+    main.html(response);
+    });
+  });
+
+  $('.location').one('click', function(event){
 
     event.preventDefault();
     whereAmI();
