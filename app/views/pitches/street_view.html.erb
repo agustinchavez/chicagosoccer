@@ -1,20 +1,29 @@
-<h1>Street View</h1>
+<div class="main">
 
-<div id="street_view"></div>
+  <h1>Street View</h1>
 
-<script type="text/javascript">
-var panorama;
-function initialize() {
-  panorama = new google.maps.StreetViewPanorama(
-    document.getElementById('street_view'),
-    {
-      position: {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>},
-      pov: {heading: 0, pitch: 0},
-      zoom: 1
-    });
-}
-</script>
+  <div id="street_view"></div>
 
-<script async defer
- src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhFk&callback=initialize">
-</script>
+  <%= button_to "Map", { action: "user_latitude_longitude", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, method: :post %>
+
+  <%= button_to "Driving Directions", { action: "driving_directions", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, method: :post %>
+
+  <%= button_to "Street View", { action: "street_view", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, method: :post %>
+
+  <script type="text/javascript">
+
+  var panorama;
+  function initialize() {
+    panorama = new google.maps.StreetViewPanorama(
+      document.getElementById('street_view'),
+      {
+        position: {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>},
+        pov: {heading: 0, pitch: 0},
+        zoom: 1
+      });
+  }
+  </script>
+
+  <script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhFk&callback=initialize">
+  </script>
