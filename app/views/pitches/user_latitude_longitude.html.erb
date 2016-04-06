@@ -4,7 +4,7 @@
 <h1>Streetview</h1>
 <div id="street-view"></div>
 
- <script type="text/javascript">
+<script type="text/javascript">
 
     var map;
     function initMap() {
@@ -36,23 +36,8 @@
   });
 }
 
-  var panorama;
-    function initialize() {
-      panorama = new google.maps.StreetViewPanorama(
-        document.getElementById('street-view'),
-        {
-          position: {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>},
-          pov: {heading: 0, pitch: 0},
-          zoom: 1
-        });
-    }
-
 </script>
 
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhFk&callback=initMap">
-</script>
-
-<script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhF&callback=initialize">
 </script>
