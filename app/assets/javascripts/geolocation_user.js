@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
-  var errors = $("#errors")
-  var main = $(".main")
+  var location = $("#location")
 
   $('#geolocatepitch').one('click', function(event){
 
@@ -11,14 +10,22 @@ $(document).ready(function(){
     function whereAmI() {
 
       if (!navigator.geolocation){
-        errors.html("<p>Unfortunately, Geolocation is not supported by your browser. Please enter your address in the form.</p>");
+        location.html("<p>Unfortunately, Geolocation is not supported by your browser. Please enter your address in the form.</p>");
         return;
       }
 
       function success(position) {
+        var latitude  = position.coords.latitude;
+        var longitude = position.coords.longitude;
 
-        var user_location = {lat: position.coords.latitude, lng: position.coords.longitude};
-        $.ajax({
+        location.attr("data-lat", latitude)
+        location.attr("data-lng", longitude)
+
+        location.html('<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>');
+
+        var user_location = {lat: latitude, lng: longitude};
+
+        request = $.ajax({
           url: "pitches/user_latitude_longitude",
           method: "post",
           data: user_location
@@ -34,20 +41,21 @@ $(document).ready(function(){
         switch(error.code) {
 
         case error.PERMISSION_DENIED:
-        errors.html("User denied the request for Geolocation.")
+        location.html("User denied the request for Geolocation.")
         break;
         case error.POSITION_UNAVAILABLE:
-        errors.html("Location information is unavailable.")
+        location.html("Location information is unavailable.")
         break;
         case error.TIMEOUT:
-        errors.html("The request to get user location timed out.")
+        location.html("The request to get user location timed out.")
         break;
         case error.UNKNOWN_ERROR:
-        errors.html("An unknown error occurred.")
+        location.html("An unknown error occurred.")
         break;
         }
       };
 
+      location.innerHTML = "<p>Locating…</p>";
       navigator.geolocation.getCurrentPosition(success, error);
     }
 
