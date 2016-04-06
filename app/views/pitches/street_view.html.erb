@@ -1,15 +1,34 @@
 <div class="main">
 
-  <h1>Street View</h1>
+  <%= form_tag "/pitches/user_latitude_longitude", method: :post, id: "map-button" do %>
+  <%= hidden_field_tag(:lat, @user_location.latitude) %>
+  <%= hidden_field_tag(:lng, @user_location.longitude) %>
+  <%= hidden_field_tag(:pitch, @pitch.id) %>
+  <%= submit_tag("Map")%>
+  <% end %>
+
+  <%= form_tag "/pitches/driving_directions", method: :post, id: "driving-button" do %>
+  <%= hidden_field_tag(:lat, @user_location.latitude) %>
+  <%= hidden_field_tag(:lng, @user_location.longitude) %>
+  <%= hidden_field_tag(:pitch, @pitch.id) %>
+  <%= submit_tag("Driving Directions")%>
+  <% end %>
+
+  <%= form_tag "/pitches/street_view", method: :post, id: "streetview-button" do %>
+  <%= hidden_field_tag(:lat, @user_location.latitude) %>
+  <%= hidden_field_tag(:lng, @user_location.longitude) %>
+  <%= hidden_field_tag(:pitch, @pitch.id) %>
+  <%= submit_tag("Street View")%>
+  <% end %>
 
   <div id="street_view"></div>
-
+<!--
   <%= button_to "Map", { action: "user_latitude_longitude", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, method: :post %>
 
   <%= button_to "Driving Directions", { action: "driving_directions", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, method: :post %>
 
   <%= button_to "Street View", { action: "street_view", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, method: :post %>
-
+ -->
   <script type="text/javascript">
 
   var panorama;

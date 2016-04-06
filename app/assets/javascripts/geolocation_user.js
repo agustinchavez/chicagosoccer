@@ -3,6 +3,47 @@ $(document).ready(function(){
   var errors = $("#errors")
   var main = $(".main")
 
+  $(document).on("submit", "#map-button", function(event){
+  event.preventDefault();
+  var data = $(this).serialize();
+  console.log("please");
+  $.ajax({
+    url: "pitches/user_latitude_longitude",
+    method: "post",
+    data: data
+    })
+    .done(function(response){
+    main.html(response);
+    });
+  });
+
+  $(document).on("submit", "#driving-button", function(event){
+  event.preventDefault();
+  var data = $(this).serialize();
+  $.ajax({
+    url: "pitches/driving_directions",
+    method: "post",
+    data: data
+    })
+    .done(function(response){
+    main.html(response);
+    $("#map").hide()
+    });
+  });
+
+  $(document).on("submit", "#streetview-button", function(event){
+  event.preventDefault();
+  var data = $(this).serialize();
+  $.ajax({
+    url: "pitches/street_view",
+    method: "post",
+    data: data
+    })
+    .done(function(response){
+    main.html(response);
+    });
+  });
+
   $('.button').one('click', function(event){
 
     event.preventDefault();
@@ -17,7 +58,7 @@ $(document).ready(function(){
 
       function success(position) {
         var user_location = {lat: position.coords.latitude, lng: position.coords.longitude};
-         $.ajax({
+        $.ajax({
           url: "pitches/user_latitude_longitude",
           method: "post",
           data: user_location
@@ -25,7 +66,6 @@ $(document).ready(function(){
         .done(function(response){
           main.html(response);
         });
-
       };
 
       function error(error) {

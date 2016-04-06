@@ -16,11 +16,11 @@
  */
 
  .main_page {
-  min-height: 50%;
+  min-height: 100px;
   overflow: hidden;
  }
 
-  #map {
+ #map {
   margin: 0 auto 0 auto;
   position: relative;
   padding-bottom: 65.25%;
@@ -29,12 +29,35 @@
   overflow: hidden;
  }
 
- #driving_directions {
-  height: 500em;
-  width: 500em;
+ #street_view {
+  margin: 0 auto 0 auto;
+  position: relative;
+  padding-bottom: 65.25%;
+  padding-top: 13em;
+  height: 0;
+  overflow: hidden;
  }
 
- #street_view {
-  height: 500em;
-  width: 500em;
+  #driving_directions {
+  margin: 0 auto 0 auto;
+  position: relative;
+  padding-bottom: 65.25%;
+  padding-top: 13em;
+  height: 0;
+  overflow: hidden;
  }
+
+#map-button {
+  display: inline-block;
+  position: center;
+}
+
+#streetview-button {
+  display: inline-block;
+  position: center;
+}
+
+#driving-button {
+  display: inline-block;
+  position: center;
+}
