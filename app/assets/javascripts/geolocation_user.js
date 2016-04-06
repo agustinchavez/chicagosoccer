@@ -6,7 +6,7 @@ $(document).ready(function(){
   $(document).on("submit", "#map-button", function(event){
   event.preventDefault();
   var data = $(this).serialize();
-  console.log("please");
+
   $.ajax({
     url: "pitches/user_latitude_longitude",
     method: "post",

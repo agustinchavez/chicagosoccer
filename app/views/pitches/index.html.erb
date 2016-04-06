@@ -1,22 +1,23 @@
 <div class="errors">
 </div>
 
-<div class="main">
-
   <div class="row">
     <div class="twelve columns text-center"><br />
 
       <h2> All Soccer Pitches </h2>
+      <div class="main">
 
       <div class="main_page">
 
-      <button id="geolocatepitch">Where is the closest soccer pitch?</button>
+      <button class="button large">Use My Current Location</button>
+      <br>
+      <hr>
         <%= form_tag "/pitches/coordinate_conversion", method: :post do %>
-        <%= submit_tag "Find Pitch", class:"success button" %>
         <%= text_field_tag "address", nil, placeholder:"Address" %>
         <%= text_field_tag "city", nil, placeholder:"City" %>
         <%= text_field_tag "state", nil, placeholder:"State" %>
         <%= text_field_tag "zip", nil, placeholder:"Zip Code" %>
+        <%= submit_tag "Find Pitch", class:"success button" %>
       <% end %>
 
       <p id="location"></p>
