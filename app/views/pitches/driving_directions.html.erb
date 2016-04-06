@@ -1,44 +1,41 @@
 <div class="main">
 
-  <%= form_tag "/pitches/user_latitude_longitude", method: :post, id: "map-button" do %>
-  <%= hidden_field_tag(:lat, @user_location.latitude) %>
-  <%= hidden_field_tag(:lng, @user_location.longitude) %>
-  <%= hidden_field_tag(:pitch, @pitch.id) %>
-  <%= submit_tag "Map", class:"button round" %>
-  <% end %>
+  <div id="buttons">
+    <%= form_tag "/pitches/user_latitude_longitude", method: :post, id: "map-button" do %>
+    <%= hidden_field_tag(:lat, @user_location.latitude) %>
+    <%= hidden_field_tag(:lng, @user_location.longitude) %>
+    <%= hidden_field_tag(:pitch, @pitch.id) %>
+    <%= submit_tag "Map", class:"button round" %>
+    <% end %>
 
-  <%= form_tag "/pitches/driving_directions", method: :post, id: "driving-button" do %>
-  <%= hidden_field_tag(:lat, @user_location.latitude) %>
-  <%= hidden_field_tag(:lng, @user_location.longitude) %>
-  <%= hidden_field_tag(:pitch, @pitch.id) %>
-  <%= submit_tag "Directions", class:"button round disabled" %>
-  <% end %>
+    <%= form_tag "/pitches/driving_directions", method: :post, id: "driving-button" do %>
+    <%= hidden_field_tag(:lat, @user_location.latitude) %>
+    <%= hidden_field_tag(:lng, @user_location.longitude) %>
+    <%= hidden_field_tag(:pitch, @pitch.id) %>
+    <%= submit_tag "Directions", class:"button round disabled" %>
+    <% end %>
 
-  <%= form_tag "/pitches/street_view", method: :post, id: "streetview-button" do %>
-  <%= hidden_field_tag(:lat, @user_location.latitude) %>
-  <%= hidden_field_tag(:lng, @user_location.longitude) %>
-  <%= hidden_field_tag(:pitch, @pitch.id) %>
-  <%= submit_tag "Street View", class:"button round" %>
-  <% end %>
+    <%= form_tag "/pitches/street_view", method: :post, id: "streetview-button" do %>
+    <%= hidden_field_tag(:lat, @user_location.latitude) %>
+    <%= hidden_field_tag(:lng, @user_location.longitude) %>
+    <%= hidden_field_tag(:pitch, @pitch.id) %>
+    <%= submit_tag "Street View", class:"button round" %>
+    <% end %>
+  </div>
 
-<h1>Driving Directions</h1>
 
 <div id="driving_directions"></div>
-<div id="walking_map"></div>
+
+<div id="driving_map"></div>
 
 <script type="text/javascript">
-
   var user_lat = <%= @user_location.lat %>;
   var user_lng = <%= @user_location.lng %>;
   var pitch_lat = <%= @pitch.latitude %>;
   var pitch_lng = <%= @pitch.longitude %>;
-
-
-
+  initDriving(user_lat, user_lng, pitch_lat, pitch_lng);
 </script>
 
-<script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhFk&callback=initMap">
-    </script>
-  </div>
+ </div>
+
 </div>

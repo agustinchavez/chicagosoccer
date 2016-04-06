@@ -26,7 +26,7 @@ $(document).ready(function(){
     $('.logo').children().animate({ "height": "3em" }, 100 )
     $('.logo').animate({ "margin-top": "0em" }, 1000 );
     $('.main').animate({ "margin-top": "-4em" }, 1000 );
-    $('.logo').children().attr("src", "/assets/soccer-ball.png")
+
 
     var data = $(event.target).parent().serialize()
     $.ajax({
@@ -46,7 +46,7 @@ $(document).ready(function(){
     $('.logo').children().animate({ "height": "3em" }, 100 )
     $('.logo').animate({ "margin-top": "0em" }, 1000 );
     $('.main').animate({ "margin-top": "-4em" }, 1000 );
-    $('.logo').children().attr("src", "/assets/soccer-ball.png")
+
     whereAmI();
 
     function whereAmI() {
@@ -71,19 +71,18 @@ $(document).ready(function(){
       function error(error) {
 
         switch(error.code) {
-
-        case error.PERMISSION_DENIED:
-        errors.html("User denied the request for Geolocation.")
-        break;
-        case error.POSITION_UNAVAILABLE:
-        errors.html("Location information is unavailable.")
-        break;
-        case error.TIMEOUT:
-        errors.html("The request to get user location timed out.")
-        break;
-        case error.UNKNOWN_ERROR:
-        errors.html("An unknown error occurred.")
-        break;
+          case error.PERMISSION_DENIED:
+          errors.html("User denied the request for Geolocation.")
+          break;
+          case error.POSITION_UNAVAILABLE:
+          errors.html("Location information is unavailable.")
+          break;
+          case error.TIMEOUT:
+          errors.html("The request to get user location timed out.")
+          break;
+          case error.UNKNOWN_ERROR:
+          errors.html("An unknown error occurred.")
+          break;
         }
       };
 

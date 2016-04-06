@@ -1,109 +1,36 @@
 <div class="main">
 
-  <%= form_tag "/pitches/user_latitude_longitude", method: :post, id: "map-button" do %>
-  <%= hidden_field_tag(:lat, @user_location.latitude) %>
-  <%= hidden_field_tag(:lng, @user_location.longitude) %>
-  <%= hidden_field_tag(:pitch, @pitch.id) %>
-  <%= submit_tag "Map", class:"button round disabled"%>
-  <% end %>
+  <div id="buttons">
+    <%= form_tag "/pitches/user_latitude_longitude", method: :post, id: "map-button" do %>
+    <%= hidden_field_tag(:lat, @user_location.latitude) %>
+    <%= hidden_field_tag(:lng, @user_location.longitude) %>
+    <%= hidden_field_tag(:pitch, @pitch.id) %>
+    <%= submit_tag "Map", class:"button round disabled"%>
+    <% end %>
 
-  <%= form_tag "/pitches/driving_directions", method: :post, id: "driving-button" do %>
-  <%= hidden_field_tag(:lat, @user_location.latitude) %>
-  <%= hidden_field_tag(:lng, @user_location.longitude) %>
-  <%= hidden_field_tag(:pitch, @pitch.id) %>
-  <%= submit_tag "Directions", class:"button round" %>
-  <% end %>
+    <%= form_tag "/pitches/driving_directions", method: :post, id: "driving-button" do %>
+    <%= hidden_field_tag(:lat, @user_location.latitude) %>
+    <%= hidden_field_tag(:lng, @user_location.longitude) %>
+    <%= hidden_field_tag(:pitch, @pitch.id) %>
+    <%= submit_tag "Directions", class:"button round" %>
+    <% end %>
 
-  <%= form_tag "/pitches/street_view", method: :post, id: "streetview-button" do %>
-  <%= hidden_field_tag(:lat, @user_location.latitude) %>
-  <%= hidden_field_tag(:lng, @user_location.longitude) %>
-  <%= hidden_field_tag(:pitch, @pitch.id) %>
-  <%= submit_tag "Street View", class:"button round" %>
-  <% end %>
+    <%= form_tag "/pitches/street_view", method: :post, id: "streetview-button" do %>
+    <%= hidden_field_tag(:lat, @user_location.latitude) %>
+    <%= hidden_field_tag(:lng, @user_location.longitude) %>
+    <%= hidden_field_tag(:pitch, @pitch.id) %>
+    <%= submit_tag "Street View", class:"button round" %>
+    <% end %>
+</div>
 
-  <h3>Here is your location, and your nearest pitch location</h3>
   <div id="map"></div>
-
-  <!--  <%= button_to "Map", { action: "user_latitude_longitude", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, id: "map-button", method: :post %>
-   <%= button_to "Driving Directions", { action: "driving_directions", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, id: "driving-button", method: :post %>
-   <%= button_to "Street View", { action: "street_view", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, id: "street-button", method: :post %> -->
-
 
   <script type="text/javascript">
     var user_lat = <%= @user_location.lat %>;
     var user_lng = <%= @user_location.lng %>;
     var pitch_lat = <%= @pitch.latitude %>;
     var pitch_lng = <%= @pitch.longitude %>;
-
-  //  var map;
-
-  //  function initMap() {
-
-
-  //   var user = {lat: <%= @user_location.lat %>, lng: <%= @user_location.lng %>};
-  //   var pitch = {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>};
-
-  //   var map = new google.maps.Map(document.getElementById('map'), {
-  //     center: user,
-  //     scrollwheel: false,
-  //     zoom: 5
-  //   });
-
-  //   var directionsDisplay = new google.maps.DirectionsRenderer({
-  //     map: map
-  //   });
-
-  //   var request = {
-  //     destination: pitch,
-  //     origin: user,
-  //     travelMode: google.maps.TravelMode.DRIVING
-  //   };
-
-  //   var directionsService = new google.maps.DirectionsService();
-  //   directionsService.route(request, function(response, status) {
-  //     if (status == google.maps.DirectionsStatus.OK) {
-  //       directionsDisplay.setDirections(response);
-  //     }
-  //   });
-  // }
-      // var playing_image = "<%= image_url "playing.jpg" %>";
-      // var soccer_ball_image = "<%= image_url "soccer-ball.png" %>";
-      // var user_location_info = "You are here"
-      // var pitch_location_info = "Here is the closest soccer pitch"
-      // var infowindowUser = new google.maps.InfoWindow({
-      // content: user_location_info
-      // });
-      // var infowindowPitch = new google.maps.InfoWindow({
-      // content: pitch_location_info
-      // });
-      // var you = new google.maps.Marker({
-      //   position: {lat: <%= @user_location.lat %>, lng: <%= @user_location.lng %>},
-      //   map: map,
-      //   title: 'You',
-      //   label: "You",
-      //   animation: google.maps.Animation.DROP
-      //   // icon: playing_image
-      // });
-      // you.addListener('click', function() {
-      // infowindowUser.open(map, you);
-      // });
-      // var pitch = new google.maps.Marker({
-      //   position: {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>},
-      //   map: map,
-      //   title: 'Your nearest pitch!',
-      //   label: "Pitch",
-      //   animation: google.maps.Animation.DROP
-      //   // icon: soccer_ball_image
-      // });
-      // bin.addListener('click', function() {
-      // infowindowPitch.open(map, pitch);
-      // });
+    initMap(user_lat, user_lng, pitch_lat, pitch_lng);
   </script>
-
-</script>
-
-<script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhFk&callback=initMap">
-    </script>
 
 </div>

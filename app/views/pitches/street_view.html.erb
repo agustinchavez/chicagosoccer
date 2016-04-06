@@ -1,42 +1,34 @@
 <div class="main">
 
-  <%= form_tag "/pitches/user_latitude_longitude", method: :post, id: "map-button" do %>
-  <%= hidden_field_tag(:lat, @user_location.latitude) %>
-  <%= hidden_field_tag(:lng, @user_location.longitude) %>
-  <%= hidden_field_tag(:pitch, @pitch.id) %>
-  <%= submit_tag "Map", class:"button round" %>
-  <% end %>
+  <div id="buttons">
+    <%= form_tag "/pitches/user_latitude_longitude", method: :post, id: "map-button" do %>
+    <%= hidden_field_tag(:lat, @user_location.latitude) %>
+    <%= hidden_field_tag(:lng, @user_location.longitude) %>
+    <%= hidden_field_tag(:pitch, @pitch.id) %>
+    <%= submit_tag "Map", class:"button round" %>
+    <% end %>
 
-  <%= form_tag "/pitches/driving_directions", method: :post, id: "driving-button" do %>
-  <%= hidden_field_tag(:lat, @user_location.latitude) %>
-  <%= hidden_field_tag(:lng, @user_location.longitude) %>
-  <%= hidden_field_tag(:pitch, @pitch.id) %>
-  <%= submit_tag "Directions", class:"button round" %>
-  <% end %>
+    <%= form_tag "/pitches/driving_directions", method: :post, id: "driving-button" do %>
+    <%= hidden_field_tag(:lat, @user_location.latitude) %>
+    <%= hidden_field_tag(:lng, @user_location.longitude) %>
+    <%= hidden_field_tag(:pitch, @pitch.id) %>
+    <%= submit_tag "Directions", class:"button round" %>
+    <% end %>
 
-  <%= form_tag "/pitches/street_view", method: :post, id: "streetview-button" do %>
-  <%= hidden_field_tag(:lat, @user_location.latitude) %>
-  <%= hidden_field_tag(:lng, @user_location.longitude) %>
-  <%= hidden_field_tag(:pitch, @pitch.id) %>
-  <%= submit_tag "Street View", class:"button round disabled" %>
-  <% end %>
+    <%= form_tag "/pitches/street_view", method: :post, id: "streetview-button" do %>
+    <%= hidden_field_tag(:lat, @user_location.latitude) %>
+    <%= hidden_field_tag(:lng, @user_location.longitude) %>
+    <%= hidden_field_tag(:pitch, @pitch.id) %>
+    <%= submit_tag "Street View", class:"button round disabled" %>
+    <% end %>
+  </div>
 
   <div id="street_view"></div>
 
   <script type="text/javascript">
     var pitch_lat = <%= @pitch.latitude %>;
     var pitch_lng = <%= @pitch.longitude %>;
-
     initStreet(pitch_lat, pitch_lng);
-
-  // var panorama;
-  // function initialize() {
-  //   panorama = new google.maps.StreetViewPanorama(
-  //     document.getElementById('street_view'),
-  //     {
-  //       position: {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>},
-  //       pov: {heading: 0, pitch: 0},
-  //       zoom: 1
-  //     });
-  // }
   </script>
+
+</div>
