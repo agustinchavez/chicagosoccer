@@ -1,28 +1,48 @@
 <div id="map"></div>
-    <script type="text/javascript">
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: <%= @user_location.lat %>, lng: <%= @user_location.lng %>},
-    zoom: 15
-  });
-    var playing_image = '../assets/images/playin.jpg';
-    var soccer_image = '../assets/images/soccer-ball.png';
+    <div id="street-view"></div>
+
+ <script type="text/javascript">
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: <%= @user_location.lat %>, lng: <%= @user_location.lng %>},
+        zoom: 15
+      });
+
+
+    var playing_image = "<%= image_url "playin.jpg" %>";
+    var soccer_image = "<%= image_url "soccer-ball.png" %>";
+
    var you = new google.maps.Marker({
     position: {lat: <%= @user_location.lat %>, lng: <%= @user_location.lng %>},
     map: map,
-    title: 'You',
+    title: 'You'
     icon: playing_image
   });
     var pitch = new google.maps.Marker({
     position: {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>},
     map: map,
-    title: 'Your pitch!',
+    title: 'Your pitch!'
     icon: soccer_image
   });
 }
+
+  var panorama;
+    function initialize() {
+      panorama = new google.maps.StreetViewPanorama(
+        document.getElementById('street-view'),
+        {
+          position: {lat: <%= @bin.latitude %>, lng: <%= @bin.longitude %>},
+          pov: {heading: 0, pitch: 0},
+          zoom: 1
+        });
+    }
+
     </script>
 
     <script async defer
  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhFk&callback=initMap">
  </script>
+ <script async defer
+         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhF&callback=initialize">
+    </script>
