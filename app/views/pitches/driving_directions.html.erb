@@ -1,11 +1,6 @@
 <h1>Driving Directions</h1>
 
-<div id="test"></div>
-
-
-<div id="right-panel"></div>
-
-<div id="floating-panel"></div>
+<div id="driving_directions"></div>
 
 <div id="map"></div>
 
@@ -19,8 +14,9 @@ function initMap() {
     zoom: 7,
     center: user
   });
+
   directionsDisplay.setMap(map);
-  directionsDisplay.setPanel(document.getElementById('test'));
+  directionsDisplay.setPanel(document.getElementById('driving_directions'));
   var control = document.getElementById('floating-panel');
   control.style.display = 'block';
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);

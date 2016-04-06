@@ -8,8 +8,20 @@ class PitchesController < ApplicationController
   def user_latitude_longitude
     @user_location = Geokit::LatLng.new(params[:lat].to_f, params[:lng].to_f)
     @pitch = Pitch.closest(:origin => @user_location).first
-    render "/pitches/driving_directions"
+    # render "/pitches/driving_directions"
+    # render "/pitches/street_view"
   end
+
+  def walking_directions
+    @user_location = Geokit::LatLng.new(params[:lat].to_f, params[:lng].to_f)
+    @pitch = Pitch.closest(:origin => @user_location).first
+  end
+
+   def street_view
+    @user_location = Geokit::LatLng.new(params[:lat].to_f, params[:lng].to_f)
+    @pitch = Pitch.closest(:origin => @user_location).first
+  end
+
 
   def coordinate_conversion
     pitch_address = params["address"] + ", " + params["city"] + ", " + params["zip"]

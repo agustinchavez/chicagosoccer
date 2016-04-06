@@ -1,13 +1,12 @@
 <h1>Here is your location, and the location of the nearest Soccer Pitch</h1>
 <div id="map"></div>
 
-<h1>Streetview</h1>
-<div id="street-view"></div>
 
 <script type="text/javascript">
 
     var map;
     function initMap() {
+
       var user = {lat: <%= @user_location.lat %>, lng: <%= @user_location.lng %>};
       var pitch = {lat: <%= @pitch.latitude %>, lng: <%= @pitch.longitude %>};
 
