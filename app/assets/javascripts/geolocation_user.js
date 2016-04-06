@@ -13,7 +13,7 @@ $(document).ready(function(){
       $('.address_form').fadeIn();
     }
     else {
-      $('.address').text("Input A NYC Address")
+      $('.address').text("Input an Address")
       $('.address_form').fadeOut();
       $('.logo').animate({"margin-top": "7em"});
     }

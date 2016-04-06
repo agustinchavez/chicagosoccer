@@ -17,8 +17,8 @@
 
       <div class="address_form">
         <%= form_tag "/pitches/coordinate_conversion", method: :post do %>
-        <%= text_field_tag "address", nil, placeholder:"Address" %>
-        <%= text_field_tag "city", nil, placeholder:"City" %>
+        <%= text_field_tag "address", nil, placeholder:"Address", required: true %>
+        <%= text_field_tag "city", nil, placeholder:"City", required: true %>
         <%= text_field_tag "state", nil, placeholder:"State" %>
         <%= text_field_tag "zip", nil, placeholder:"Zip Code" %>
         <%= submit_tag "Find Pitch", class:"success button" %>
