@@ -5,7 +5,7 @@ function initWalking(user_lat, user_lng, pitch_lat, pitch_lng) {
   var directionsDisplay = new google.maps.DirectionsRenderer;
   var directionsService = new google.maps.DirectionsService;
 
-  var map = new google.maps.Map(document.getElementById('map'), {
+  var map = new google.maps.Map(document.getElementById('driving_map'), {
     zoom: 5,
     center: user
   });

@@ -56,7 +56,7 @@ $(document).ready(function(){
   var data = $(this).serialize();
 
   $.ajax({
-    url: "pitches/user_latitude_longitude",
+    url: "/pitches/user_latitude_longitude",
     method: "post",
     data: data
     })
@@ -69,7 +69,7 @@ $(document).ready(function(){
   event.preventDefault();
   var data = $(this).serialize();
   $.ajax({
-    url: "pitches/driving_directions",
+    url: "/pitches/driving_directions",
     method: "post",
     data: data
     })
@@ -83,7 +83,7 @@ $(document).ready(function(){
   event.preventDefault();
   var data = $(this).serialize();
   $.ajax({
-    url: "pitches/street_view",
+    url: "/pitches/street_view",
     method: "post",
     data: data
     })

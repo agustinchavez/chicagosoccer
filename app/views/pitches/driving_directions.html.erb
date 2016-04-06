@@ -21,17 +21,11 @@
   <%= submit_tag("Street View")%>
   <% end %>
 
-<h1 class="text-center">Driving Directions</h1>
+<h1>Driving Directions</h1>
 
 <div id="driving_directions"></div>
+<div id="walking_map"></div>
 
-<!--
-  <%= button_to "Map", { action: "user_latitude_longitude", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, method: :post %>
-
-  <%= button_to "Driving Directions", { action: "driving_directions", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, method: :post %>
-
-  <%= button_to "Street View", { action: "street_view", lat: @user_location.latitude, lng: @user_location.longitude, pitch: @pitch }, method: :post %>
- -->
 <script type="text/javascript">
 
   var user_lat = <%= @user_location.lat %>;
@@ -46,5 +40,5 @@
 <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH1Nw9chGoRMKXeviLn3ox6OoF1A8FhFk&callback=initMap">
     </script>
-
+  </div>
 </div>
