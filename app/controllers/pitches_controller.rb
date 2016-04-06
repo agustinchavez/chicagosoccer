@@ -1,9 +1,5 @@
 class PitchesController < ApplicationController
 
-    include ParserHelper
-
-    PITCHES ||= ParserHelper.get_data
-
   def index
     @pitches = Pitch.all
     render "/pitches/index"
