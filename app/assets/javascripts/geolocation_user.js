@@ -17,7 +17,6 @@ $(document).ready(function(){
       $('.address_form').fadeOut();
       $('.logo').animate({"margin-top": "7em"});
     }
-
   })
 
    $('.success.button').on('click', function(event){
@@ -29,8 +28,9 @@ $(document).ready(function(){
 
 
     var data = $(event.target).parent().serialize()
+
     $.ajax({
-    url: "/pitches/user_latitude_longitude",
+    url: "/pitches/coordinate_conversion",
     method: "post",
     data: data
     })
@@ -92,10 +92,10 @@ $(document).ready(function(){
   })
 
   $(document).on("submit", "#map-button", function(event){
-  event.preventDefault();
-  var data = $(this).serialize();
+    event.preventDefault();
+    var data = $(this).serialize();
 
-  $.ajax({
+    $.ajax({
     url: "/pitches/user_latitude_longitude",
     method: "post",
     data: data
@@ -106,26 +106,25 @@ $(document).ready(function(){
   });
 
   $(document).on("submit", "#driving-button", function(event){
-  event.preventDefault();
-  var data = $(this).serialize();
-  $.ajax({
+    event.preventDefault();
+    var data = $(this).serialize();
+    $.ajax({
     url: "/pitches/driving_directions",
     method: "post",
     data: data
     })
     .done(function(response){
     main.html(response);
-    $("#map").hide()
     });
   });
 
   $(document).on("submit", "#streetview-button", function(event){
-  event.preventDefault();
-  var data = $(this).serialize();
-  $.ajax({
-    url: "/pitches/street_view",
-    method: "post",
-    data: data
+    event.preventDefault();
+    var data = $(this).serialize();
+    $.ajax({
+      url: "/pitches/street_view",
+      method: "post",
+      data: data
     })
     .done(function(response){
     main.html(response);

@@ -25,10 +25,11 @@ class PitchesController < ApplicationController
 
 
   def coordinate_conversion
-    pitch_address = params["address"] + ", " + params["city"] + ", " + params["zip"]
-    address_data = Geokit::Geocoders::GoogleGeocoder.geocode pitch_address
+    address = params["address"] + ", " + params["city"] + ", " + params["zip"]
+    address_data = Geokit::Geocoders::GoogleGeocoder.geocode address
     @user_location = Geokit::LatLng.new(address_data.lat, address_data.lng)
     @pitch = Pitch.closest(:origin => @user_location).first
+    # binding.pry
     render "/pitches/user_latitude_longitude", layout: false
   end
 
