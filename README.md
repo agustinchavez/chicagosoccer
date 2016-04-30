@@ -1,4 +1,6 @@
 # chicagosoccer
+chicagosoccer.herokuapp.com
+
 Find a soccer field near you.
 
 ChicagoSoccer is a web application that uses geolocation technology to allow you to locate the nearest soccer pitch in Chicago. Using data on a custom JSON file, the user's location from their browser, and maps from the Google Maps API, ChicagoSoccer make it easy for people find a great place to play the beauftiful game.
