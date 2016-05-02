@@ -1,5 +1,4 @@
 # chicagosoccer
-chicagosoccer.herokuapp.com
 
 Find a soccer field near you.
 
